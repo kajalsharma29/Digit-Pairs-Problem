@@ -1,0 +1,49 @@
+def count(x):
+    res =str(x)
+    return len(res)
+
+def check(num):
+    a=str(num)
+    if(len(a)>2):
+        return(a[1:])
+    else:
+        return a
+        
+      
+def assess(res):
+    d=dict()
+    flag =0
+    for strings in res:
+        if strings[0] in d:
+            flag+=1
+        else:
+            d[strings[0]] = strings[0]
+    return(flag)
+
+
+
+n=int(input())
+a=list(map(int,input().split()))
+c=list()
+for x in a:
+    b=list()
+    for i in range(count(x)):
+        res = x%10
+        b.append(res)
+        x=x//10
+    num = max(b)*11+min(b)*7
+    print(check(num))
+    c.append(check(num))
+
+print(c)
+res1 =[]
+res2 =[]
+for i in range(0,len(c),2):
+    res1.append(c[i])
+print(res1)
+for i in range(1,len(c),2):
+    res2.append(c[i])
+print(res2)
+f1=assess(res1)
+f2=assess(res2)
+print(f1+f2)
